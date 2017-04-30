@@ -117,6 +117,16 @@ post '/post' => sub {
             }
         }
 
+## Insert entry to DB
+    my $title     = $c->req->parameters->{title};
+    my $localtime = localtime;
+    my $date      = $localtime->strftime("%Y/%m/%d");
+    my $body      = $c->req->parameters->{body};
+    my $row       = $c->db->insert(schedules => {
+                        title => $title,
+                        date  => $date,
+                        body  => $body,
+                    });
 
 ## Insert elements to img DB
     my $id = $row->id;
@@ -130,17 +140,6 @@ post '/post' => sub {
     } else {
     }
 
-## Insert entry to DB
-    my $title     = $c->req->parameters->{title};
-    my $localtime = localtime;
-    my $date      = $localtime->strftime("%Y/%m/%d");
-    my $body      = $c->req->parameters->{body};
-    $body         .= '<br>' ."$path"; # Attach img path to the end of body
-    my $row       = $c->db->insert(schedules => {
-                        title => $title,
-                        date  => $date,
-                        body  => $body,
-                    });
     return $c->redirect('/');
 };
 
