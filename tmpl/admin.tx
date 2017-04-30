@@ -1,0 +1,38 @@
+: cascade "include/layout.tx"
+: override content -> {
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>本文</th>
+      <th>サムネイル</th>
+      <th>日付</th>
+    </tr>
+  </thead>
+  <tbody>
+  : for $schedules -> $schedule {
+    <tr>
+      <td class="col-sm-3"><a href="<: uri_for('/schedules/'~$schedule.id~'/edit') :>"><: $schedule.title :></a></td>
+      <td><: $schedule.body :></td>
+      :if ($schedule.date.strftime('%Y/%m/%d') == $today ) {
+      <td><p class="text-danger"><: $schedule.date.strftime("%Y/%m/%d") :></p></td>
+   : } else {
+      <td><: $schedule.date.strftime('%Y/%m/%d') :></td>
+   : }
+      <td class="col-sm-3">
+      <div id="ajax-result"></div>
+       <form method="POST" action="<: uri_for('/schedules/'~$schedule.id~'/delete') :>">
+         <button type="danger" class="btn btn-default">削除</button>
+       </form>
+       <form method="GET" action="<: uri_for('/schedules/'~$schedule.id~'/edit') :>">
+         <button class="btn btn-primary" href="<: uri_for('/schedules/' ~ $schedule.id ~ '/edit') :>">編集</button>
+       </form>
+        <button class="btn btn-default" id="button-upload" >upload</button>
+        <a href="#modalInclude"class="modalBtn">Open modal window</a>
+       </td>
+     </tr>
+  : }
+  </tbody>
+</table>
+
+: }

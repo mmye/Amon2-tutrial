@@ -1,0 +1,59 @@
+//(if typeof(window.console) == "undefined") { console = {}; console.log = console.warn = console.error = function(a) {}; }
+
+//Reference for Ajax form
+//http://ginpen.com/2013/05/07/jquery-ajax-form/
+
+$(function() {
+    $('#button-upload').on('click', function(event) { //preventDefault fails if .submin(function(event)
+        //Cancel html request
+        //event.preventDefault();
+
+        //Get form elements
+        var $form = $(this);
+
+        //Get submint button (To prevent duplicate requests)
+        var $button = $form.find('button');
+
+        //Debug print target textarea
+        var textareaElements = document.getElementsByName('input');
+        //var sendtext = textareaElements[0].value
+        console.log(textareaElements[0].value);
+
+        $.ajax({
+            url: '/upload',
+            type: 'POST',
+            dataType: "html",
+            data: {
+            // Insert XSRF token here (or additionally CSRF token)
+            // Reference: http://d.hatena.ne.jp/end0tknr/20141219/1418970299
+                'XSRF-TOKEN': $.cookie('XSRF-TOKEN'), //requre:jquery.cookie.js
+                text: textareaElements[0].value,
+            },
+
+            timeout: 1000, //unit: msec
+            //Before send
+            beforeSend: function(xhr, settings) {
+                //Disable the button to prevent duplicate requests
+                $button.attr('disabled', true);
+                //$button.addClass('loading');
+            },
+
+            //After response
+            complete: function(xhr, textStatus) {
+                //Enable the button to allow send the request
+                $button.attr('disabled', false);
+            },
+
+            success: function(res_data, textStatus, xhr) {
+                console.log("ok");
+                console.log(res_data);
+                var div = $('#output');
+                div.html( res_data );
+            },
+
+            error: function(res_data, textStatus, xhr) {
+                console.log("not ok");
+            }
+        });
+    });
+});

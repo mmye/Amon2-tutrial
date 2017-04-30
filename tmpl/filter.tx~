@@ -1,0 +1,35 @@
+: cascade "include/layout.tx"
+: override content -> {
+
+<h2 class="page-title"><: $schedules.title :></h1>
+<div class="row">
+  <div class="col-sm-6 well">
+    <form name="source" id="form" method="POST" action="<: uri_for('../upload') :>" onsubmit="if(this.elements[0].value.length == 0) return false; " enctype="multipart/form-data">
+      <div class="gt-hl-layer short_text" style="box-sizeing: content-box; width: 520px; height: 318px; left: 0px; top:0px; padding-left: 8px; padding-right: 20px;">
+        <label>Input</label>
+        <textarea class="form-control source" rows="10" name="input"style="resize: none;" ></textarea>
+      </div>
+      <form id="uploadform">
+        <input type="file" id="textUpload" name="upfile">
+        <input type="submit" id="button-upload" value="Upload" class="btn btn-primary" />
+      </form>
+    </form>
+  </div><!-- /#col-sm-6 well -->
+  <div class="col-sm-6 well">
+    <form name="output">
+      <div class="form-group">
+        <label>Output</label>
+        <div id="output">
+          <: $res_data.body | html :>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-default">hoge</button>
+          <button class="btn btn-default">hoge</button>
+          <button class="btn btn-default">hoge</button>
+        </div>
+      </div><!-- /#form-group -->
+    </form>
+  </div><!-- /#col-sm-6 well -->
+</div><!-- /#row -->
+
+:}

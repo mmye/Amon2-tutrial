@@ -1,0 +1,6 @@
+: cascade "include/layout.tx"
+: override content -> {
+
+   <h1>Fullscreen image test</h1>
+   <img src="/static/upload/fullscreen.jpg" id="fullScreen">
+: }

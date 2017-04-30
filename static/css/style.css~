@@ -1,0 +1,92 @@
+body {
+  color: #FFF;
+  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ',Meiryo,'MS Pゴシック', sans-serif;
+  line-height: 1.4em;
+  text-align: center;
+  word-wrap: break-word;
+  /***/
+  background: #333 url(..images/bg_grid.gif) repeat;
+}
+#wrap,
+#header,
+#contents,
+#footer,
+#slider,
+#topicPath,
+#gallery {
+	width: 100%;
+	clear: both;
+}
+.inner {
+	width: 950px;
+	margin: 0 auto;
+	text-align: left
+	overflow: hidden;
+}
+
+h1 {
+	width: 300px;
+	height: 100px;
+	padding-top: 1.2em;
+    float: left;
+}
+h1 a {
+	color: #FFF;
+	text-decoration: none;
+}
+h1 a:hover {
+	color: #FFCC00;
+}
+#gnav {
+	float: right;
+	width: 480px;
+}
+#gnav ul,
+#gnav li {
+	height: 100px;
+	text-align: center;
+}
+#gnav li {
+	width: 120px;
+	float: left;
+}
+#gnav li a {
+	color: #FFF;
+	text-decoration: none;
+	padding: 39px 0;
+	display: block;
+}
+#gnav li a.active,
+#gnav li a:hover {
+	background: #333333;
+	font-weight: bold;
+}
+#topicPath {
+	font-size: medium;
+	background: #222222;
+	margin-bottom: 50px;
+	padding: 12px 0;
+	border-bottom: 1px solid #FFF;
+}
+#topicPath a { color: #FFF; text-decoration: none; }
+#topicPath a:hover { text-decoration: underline; }
+#topicPath strong { color: #FFCC00; }
+
+h2 {
+	font-size: xx-large;
+	line-height: 1.2em;
+	border-top: 5px solid #FFCC00;
+	border-bottom: 1px solid #000;
+	margin-bottom: 30px;
+	padding: 30px 0;
+}
+.galleryArchive ul {
+	overflow: hidden;
+}
+.galleryArchive li {
+	float: left;
+	margin-right; 25px;
+}
+.galleryArchive a {
+	color: #FFFFFF;
+}

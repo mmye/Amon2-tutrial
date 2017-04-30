@@ -21,8 +21,19 @@ my $app = builder {
         root => File::Spec->catdir(dirname(__FILE__), '..', 'static');
     enable 'Plack::Middleware::ReverseProxy';
 
+    # http://search.cpan.org/~miyagawa/Plack-1.0042/lib/Plack/Middleware/Auth/Basic.pm
+    #enable 'Plack::Middleware::Auth::Basic',
+    #    authenticator => \&authen_cb;
+
     Scheduler::Web->to_app();
 };
+
+# http://search.cpan.org/~miyagawa/Plack-1.0042/lib/Plack/Middleware/Auth/Basic.pm
+sub authen_cb {
+    my($username, $password, $env) = @_;
+    return $username eq 'admin' && $password eq 'admin';
+}
+
 unless (caller) {
     my $port        = 5000;
     my $host        = '160.16.120.40';

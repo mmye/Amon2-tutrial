@@ -1,0 +1,15 @@
+: cascade "include/layout_formodal.tx"
+: override content -> {
+
+<a href="#modalInclude" class="modalBtn">>>Open Modal window</a>
+
+<div id="modalInclude">
+  <h2>Modal window area</h2>
+  <p>some sentences.</p>
+  <p>some sentences.</p>
+  <p>some sentences.</p>
+  <p>some sentences.</p>
+  <p>some sentences.</p>
+  <p>some sentences.</p>
+</div>
+: }

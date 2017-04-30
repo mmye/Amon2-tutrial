@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>Picture gallery</title>
+<link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="static/js/jquery-2.1.1.min.js"></script> 
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<script src="static/js/galleria-1.5.5.js" type="text/javascript"></script>
+<script type="text/javascript">
+   //load theme(Don't remove this)
+   Galleria.loadTheme( 'static/js/themes/classic/galleria.classic.min.js');
+
+   //option
+   option = {
+	width:      950,
+	height:     630,
+
+	autoplay:   3000,
+	carousel:   true,
+	imageCrop:  true,
+	toggleInfo: false,
+
+	lightbox:   true,
+	ligthboxFadeSpeed: 600,
+	lightboxTransitionSpeed: 600
+   }
+
+   //create gallery (Don't remove this)
+   Galleria.run( '#gallery', option);
+</script>
+<body>
+  <div id="header">
+    <div class="inner">
+      <h1><a href="<: uri_for('/') :>">Home</a></h1>
+
+      <div id="gnav">
+      <ol>
+      <li><a href="<: uri_for('/') :>">Home</a></li>
+      </ol>
+      <!-- /#gnav --></div>
+      <!-- /.inner --></div>
+      <!-- /#heaer --></div>
+  </div><!-- /#header -->
+  <div id="topicPath">
+
+  </div><!-- /#topicPath -->
+  <div id="contents">
+   <ul id="gallery">
+   : for $images -> $image {
+     <li><img src="<: $image.path :>"></li>
+   :}
+   </ul><!-- /#gallery -->
+   <ul class="galleryArchive">
+     <li><a href="#">2017.03</a></li>
+     <li><a href="#">2017.04</a></li>
+   </ul><!-- /#galleryArchive -->
+ </div>
+ <div id="footer">
+
+ </div><!-- /#footer -->
+</body>
+</html>

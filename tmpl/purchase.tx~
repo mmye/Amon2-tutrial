@@ -1,0 +1,52 @@
+: cascade "include/layout.tx"
+: override content -> {
+
+ <h1 class="page-header">Inquiry</h1>
+ <form class="form-horizontal">
+   <div class="form-group">
+     <label class="col-sm-3 control-label" for="name1">Name</label>
+     <div class="col-sm-9">
+       <input type="text" class="form-control" id="name1">
+     </div>
+   </div>
+   <div class="form-group">
+     <label class="col-sm-3 control-label" for="mail1">email</label>
+     <div class="col-sm-9">
+       <input type="email" class="form-control" id="mail1">
+       <p class="help-block">* Hankaku character only</p>
+     </div>
+   </div>
+   <div class="form-group">
+     <label class="col-sm-3 control-label" for="ask1">Inquiry</label>
+     <div class="col-sm-9">
+       <textarea rows="5" class="form-control" id="ask1"></textarea>
+     </div>
+   </div>
+   <div class="form-group">
+     <div class="col-sm-offset-3 col-sm-9 text-right">
+       <button class="btn btn-default">Send</button>
+     </div>
+   </div>
+
+  <div class="form-group">
+    <label for="col-sm-3 control-label" for="opt">Option</label>
+    <div class="col-sm-9" id="opt">
+      <div class="checkbox"><label><input type="checkbox">Gift wrapping</label></div>
+      <div class="checkbox"><label><input type="checkbox">Delivery date appointment</label></div>
+      <div class="checkbox disabled"><label><input type="checkbox disabled">P.O. percel</label></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-9">
+      <label for="sel1" class="col-sm-9 control-label">Recipt</label>
+      <div class="col-sm-9">
+        <select class="form-control" id="se1">
+          <option>Publish repeipt to delivering address and name</option>
+          <option>Publish recipt by a designated name</option>
+          <option>No need for recipt</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</form>
+:}

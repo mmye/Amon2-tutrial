@@ -1,0 +1,11 @@
+: cascade "include/blog.tx"
+: override content -> {
+<form class="form-group">
+  <input type="radio" name="format" id="radio1" value="markdown" checked="checked"><label for="radio1">Markdown</label>
+  <input type="radio" name="format" id="radio2" value="xatena"><label for="radio2">はてな記法</label>
+  <input type="radio" name="format" id="radio3" value="pod"><label for="radio3">Pod</label>
+  <textarea rows="20" columns="10" resize="none" wrap="SOFT"></textarea>
+</form>
+<hr>
+<div id="preview"></div>
+:}

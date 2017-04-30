@@ -1,0 +1,15 @@
+--2017-03-22 13:49:09--  http://160.16.120.40:5000/static/upload/img_20170217150144-42195.jpg
+Connecting to 160.16.120.40:5000... connected.
+HTTP request sent, awaiting response... Read error (Connection reset by peer) in headers.
+Retrying.
+
+--2017-03-22 13:49:10--  (try: 2)  http://160.16.120.40:5000/static/upload/img_20170217150144-42195.jpg
+Connecting to 160.16.120.40:5000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 433 [image/jpeg]
+Saving to: 'img_20170217150144-42195.jpg.2'
+
+     0K                                                       100% 2.05M=0s
+
+2017-03-22 13:49:10 (2.05 MB/s) - 'img_20170217150144-42195.jpg.2' saved [433/433]
+

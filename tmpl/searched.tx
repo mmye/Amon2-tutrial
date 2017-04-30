@@ -1,0 +1,49 @@
+: cascade "include/blog.tx"
+: override content -> {
+<div class="blog-header">
+  <div class="container">
+    <h1 class="blog-title">My blog</h1>
+    <p class="lead blog-description">Tutrial blog build with Bootstrap by me.</p>
+  </div>
+</div>
+<!-- /.blog-header -->
+<div class="container">
+  <div class="row">
+        <div class="span12">
+            <form id="custom-search-form" action="/search" class="form-search form-horizontal pull-center">
+              <div class="input-append span12">
+                <input type="text" name="search_word" id="search_word" class="search-query" placeholder="Search">
+                <button type="submit" id="search" class="btn"><i class="icon-search"></i></button>
+              </div>
+            </form>
+        </div>
+  </div>
+</div>
+: for $schedules -> $schedule {
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 blog-main">
+      <div class="blog-post">
+        <h2 class="blog-post-title"><a href="<: uri_for('/schedules/'~$schedule.id~'/edit') :>"><: $schedule.title :></a></h2>
+        <p class="blog-post-meta"><: $schedule.date :></p>
+        <p><: $schedule.body | html :></p>
+      </div>
+    </div>
+    <!-- blog-article -->
+:}
+  </div><!-- /#row -->
+
+</div><!-- /#container -->
+<div class="col-sm-3 offset-sm-1 blog-sidebar">
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ol class="list-unstyled">
+      <li>2017,04</li>
+    : for $archives -> $period {
+      <li><a id="<: $period.month :>" href="<: $period.month :>"></a></li>
+    :}
+    </ol>
+  </div>
+</div>
+
+:}

@@ -1,0 +1,15 @@
+: cascade "include/layout.tx"
+: override content -> {
+
+<h1 class="page-header">About</h1>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <ul class="list-group">
+      <li class="list-group-item"><: $schedules.name :></li>
+      <li class="list-group-item"><: $schedules.age :></li>
+      <li class="list-group-item"><: $schedules.sex :></li>
+      <li class="list-group-item"><: $schedules.favorite_food :></li>
+    </ul>
+    </div>
+  </div>
+: }

@@ -1,0 +1,10 @@
+: cascade "include/layout.tx"
+: override content -> {
+<div class="delayLoad">
+  <ul>
+    :for $images -> $image
+    <li><img src="static/upload/<: $image.path :>" alt=""></li>
+    :
+  </ul>
+</div>
+: }

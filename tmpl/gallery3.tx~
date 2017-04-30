@@ -1,0 +1,39 @@
+: cascade "include/layout.tx"
+: override content -> {
+
+<script type="text/javascript">
+   //load theme(Don't remove this)
+   Galleria.loadTheme( 'static/js/themes/classic/galleria.classic.min.js');
+
+   //option
+   option = {
+	width:      950,
+	height:     630,
+
+	autoplay:   3000,
+	carousel:   true,
+	imageCrop:  true,
+	toggleInfo: false,
+
+	lightbox:   true,
+	ligthboxFadeSpeed: 600,
+	lightboxTransitionSpeed: 2000
+   }
+
+   //create gallery (Don't remove this)
+   Galleria.run( '#gallery', option);
+</script>
+
+ <div id="contents">
+   <ul id="gallery">
+   : for $images -> $image {
+     <li><img src="<: $image.path :>"></li>
+   :}
+   </ul><!-- /#gallery -->
+   <ul class="galleryArchive">
+     <li><a href="#">2017.03</a></li>
+     <li><a href="#">2017.04</a></li>
+   </ul><!-- /#galleryArchive -->
+ </div><!-- /#contents -->
+
+:}

@@ -31,6 +31,20 @@ use Scheduler::Web::View;
 
 # for your security
 __PACKAGE__->add_trigger(
+    BEFORE_DISPATCH => sub {
+        my ( $c, $res ) = @_; # 引数怪しい
+
+	#$c->{stash} = +{
+	#};
+
+        #my $user_id = $c->session->get('user_id');
+        #if ( $user_id ) {
+        #    # ログインユーザー向けの何か
+	#    my $user = $c->db->single(users => {id => $user_id});
+	#    $c->{stash}{user} = $user;
+        #}
+
+    },
     AFTER_DISPATCH => sub {
         my ( $c, $res ) = @_;
 

@@ -8,6 +8,8 @@ use Scheduler::DB::Schema;
 use Scheduler::DB;
 
 use parent qw/Amon2/;
+use File::Spec;
+
 # Enable project local mode.
 __PACKAGE__->make_local_context();
 
@@ -43,5 +45,5 @@ This is a main context class for Scheduler
 
 =head1 AUTHOR
 
-Scheduler authors.
+masato
 

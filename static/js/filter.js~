@@ -1,0 +1,39 @@
+if (typeof(window.console) == "undefined") { console = {}; console.log = console.warn = console.error = function(a) {}; }
+    
+    $( function() {
+    $('#button-filter').click(
+
+    //get source text
+    var source = document.getElementById('textareain');
+    alert(source);
+    function() {
+    $.ajax({
+	    url: '/filter',
+	    type: 'POST',
+	    data: {
+		// ここにXSRFトークン(またはCSRFトークン)も必要
+		// 参考: http://d.hatena.ne.jp/end0tknr/20141219/1418970299
+                'XSRF-TOKEN': $.cookie('XSRF-TOKEN'), // need jquery.cookie.js 
+	    },
+	    // HTMLとしてレスポンスを受け取る例
+	    //dataType: 'html',
+	    //success: function(html) {
+	    //    $('#btn-upload').after(html);
+	    //}
+
+	    // JSONとしてレスポンスを受け取る例
+	    dataType: 'json',
+	    success: function(res_data) {
+                var filtered = res_data.body;
+		alert("ok");
+		$( '#ajax-result' ).html( '<font color="blue">OK</font>' );
+		document.getElementById("textarea").value = filtered;
+		},
+            error: function(res_data) {
+                alert("not ok");
+                $( '#ajax-result' ).html( '<font color="red">NG</font>' );
+		   }
+            });
+        });
+     });
+    

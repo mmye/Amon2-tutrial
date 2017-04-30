@@ -1,0 +1,108 @@
+package Scheduler::Web::C::Root;
+
+use strict;
+use warnings;
+use utf8;
+use Time::Piece;
+use DDP;
+use Encode 'encode_utf8';
+use Pod::Simple::XHTML;
+use Scheduler::Web::C::Util qw/ valid_type create_filename /;
+
+sub upload {
+    my ( $class, $c, $args ) = @_;
+    my @arr =();
+    my $text;
+    my $str = $c->req->upload('upfile');
+
+    if($str) {
+        my $ext = '.' . Scheduler::Web::C::Util::valid_type($str->content_type);
+        $text = do {
+            open my $fh, '<', $str->path or die $!;
+            local $/;
+            <$fh>;
+        };
+
+        # DB:sourcetext has: id, type, name, date, body, owner colmuns
+        my $row = $c->db->insert(sourcetexts => {
+                   body    => $text,
+        });
+        return $c->render('filter.tx', { res_data => $row });
+    } else {
+
+        # Get textarea value
+        # Ref: http://blog.mitsuto.com/archives/107911
+        @arr = $c->req->parameters->get_all('text');
+        warn "try to catch textarea--->";
+        p @arr;
+        $text = join("", @arr);
+        $text .= 'super';
+
+        my $res = $c->context->create_response(
+            200,
+            [
+             'Content-Type' => 'text/plain; chrset=UTF-8',
+             'Content-Length' => length($text),
+            ],
+            [$text]
+        );
+        return $res;
+    }
+}
+
+sub search {
+    my ( $class, $c) = @_;
+
+    # Obtain text in the input
+    my $search_word = $c->req->parameters->{search_word};
+    # LIKE query
+    my $itr_b = $c->db->search('schedules', ['body', {'like' => "%$search_word%"}] );
+
+    # Insert highlight tag to matched entries
+    my $matched;
+    while ( my $row = $itr_b->next ) {
+        my $body = $row->body;
+        $body =~ s{($search_word)} {<span class="highlight">$1</span>}g;
+        warn "$body\n";
+        my $e = {
+            id    => $row->id,
+            title => $row->title,
+            data  => $row->date,
+            body  => $body,
+
+        };
+        push( @$matched, $e );
+    }
+    return $c->render('index.tx', { schedules => $matched });
+}
+
+sub new_entry {
+    my ( $class, $c ) = @_;
+    return $c->render('new_entry.tx');
+}
+
+## Entry admin page
+sub admin {
+   my ( $class, $c ) = @_;
+
+   my $itr_b = $c->db->search('images');
+   my @img_path;
+   while( my $row = $itr_b->next ) {
+       push( @img_path, $row->path);
+   }
+
+   ## Collect all entries
+   my @schedules = $c->db->search('schedules');
+
+   ## Get today's date str: yyyy/mm/dd
+   ## Option: highlight entry by changing font color
+   my $localtime = localtime;
+   my $today = $localtime->strftime("%Y/%m/%d");
+   return $c->render('admin.tx', {
+       schedules => \@schedules,
+       today     => \$today,
+       images    => \@img_path
+       });
+}
+
+1;

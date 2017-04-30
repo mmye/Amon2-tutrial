@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title><: $title || 'Scheduler' :></title>
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta name="format-detection" content="telephone=no" />
+  <script src="static/js/jquery-2.1.1.min.js"></script>
+  <link href="<: uri_for('/static/bootstrap/css/bootstrap.css') :>" rel="stylesheet" type="text/css" />
+  <link href="<: uri_for('/static/css/blog.css') :>" rel="stylesheet" type="text/css" />
+  <link href="<: static_file('/static/css/main.css') :>" rel="stylesheet" type="text/css" media="screen" />
+  <script src="<: uri_for('/static/bootstrap/js/bootstrap.js') :>"></script>
+  <script src="<: uri_for('/static/js/es5-shim.min.js') :>"></script>
+  <script src="<: uri_for('/static/js/micro_template.js') :>"></script>
+  <script src="<: uri_for('/static/js/strftime.js') :>"></script>
+  <script src="<: uri_for('/static/js/jquery.cookie.js') :>"></script>
+  <script src="<: uri_for('/static/js/sprintf.js') :>"></script>
+  <script src="<: uri_for('/static/js/micro-location.js') :>"></script>
+  <script src="<: uri_for('/static/js/micro_dispatcher.js') :>"></script>
+  <script src="<: uri_for('/static/js/xsrf-token.js') :>"></script>
+  <script src="<: uri_for('/static/js/main.js') :>"></script>
+  <script src="<: uri_for('/static/js/markdown_preview.js') :>"></script>
+  <!--[if lt IE 9]>
+   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="navbar navbar-default">
+    <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home"></span> MyBlog</a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="/user"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+      <li><a href="/gallery"><span class="glyphicon glyphicon-picture"></span> Pictures</a></li>
+      <li><a href="/filter"><span class="glyphicon glyphicon-file"></span> Filter app</a></li>
+      <li><a href="/purchase"><span class="glyphicon glyphicon-shopping-cart"></span> Sample form</a></li>
+      <li><a href="/contact"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="/new_entry">New entry</a></li>
+      <li><a href="/admin">Admin</a></li>
+    </ul>
+  </div>
+</div><!-- /.container -->
+</div><!-- /.navbar -->
+<div class="container">
+<: block content -> { } :>
+</div><!-- /.container -->
+<footer class="footer">
+  Powered by <a href="http://amon.64p.org/">Amon2</a>
+</footer>
+</body>
+</html>

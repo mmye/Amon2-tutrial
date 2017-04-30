@@ -1,0 +1,26 @@
+: cascade "include/layout.tx"
+: override content -> {
+<div class="delayLoad" style="width: 200px">
+  <ul>
+    :for $images -> $image {
+
+     <a href="#<: $image.id :>" data-toggle="modal">
+        <li><img src="/<: $image.path :>" alt="cool pics" class="col-xs-3 grid-img"></li>
+     </a>
+     <div class="modal fade" id="<: $image.id :>">
+        <div class="modal-dialog modal-lg">
+         <div class="modal-content">
+           <div class="modal-body">
+             <button class="close" data-dismiss="modal">
+               <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+             </button>
+             <img src="<: $image.path :>" class="img-responsive" width="300" height="300">
+          </div>
+        </div>
+      </div>
+     </div>
+    </div>
+    : }
+  </ul>
+</div>
+: }

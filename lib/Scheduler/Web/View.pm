@@ -6,8 +6,10 @@ use Carp ();
 use File::Spec ();
 
 use File::ShareDir;
-use Text::Xslate 1.6001;
+use Text::Xslate 1.6001 qw/ html_builder /;
 use Scheduler::Web::ViewFunctions;
+
+use Text::Markdown;
 
 # setup view class
 sub make_instance {
@@ -37,6 +39,9 @@ sub make_instance {
             'Scheduler::Web::ViewFunctions',
         ],
         'function' => {
+            html => html_builder {
+                Text::Markdown::markdown(shift);
+            },
         },
         ($context->debug_mode ? ( warn_handler => sub {
             Text::Xslate->print( # print method escape html automatically

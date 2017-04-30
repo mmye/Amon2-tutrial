@@ -1,0 +1,38 @@
+: cascade "include/layout.tx"
+: override content -> {
+
+<h2 class="page-header">Ajax test</h2>
+<form>
+	<div class="form-group">
+		<label for="textUpload"></label>
+		<input type="file" id="textUpload" name="upfile">
+	</div>
+	<button type="button" id="button-upload" class="btn btn-primary" value="UPLOAD">button</button>
+	<p>type="button" method="not defined" class="btn btn-primary" value="UPLOAD"</p>
+</form>
+
+<form>
+	<div class="form-group" method="POST">
+		<label for="textUpload"></label>
+		<input type="file" id="textUpload" name="upfile">
+	</div>
+	<span type="submit" id="button-upload" class="btn btn-primary" value="UPLOAD">submit</span>
+	<p>span type="submit" method="POST" class="btn btn-primary" value="UPLOAD"</p>
+</form>
+<form>
+	<div class="form-group" method="POST">
+		<label for="textUpload"></label>
+		<input type="file" id="textUpload" name="upfile">
+	</div>
+	<button type="submit" id="button-upload" class="btn btn-primary" value="UPLOAD">button</button>
+	<p>button type="submit" method="POST" class="btn btn-primary" value="UPLOAD"</p>
+</form>
+<form>
+	<div class="form-group" method="POST">
+		<label for="textUpload"></label>
+		<input type="file" id="textUpload" name="upfile">
+	</div>
+	<button id="button-upload" class="btn btn-primary" value="UPLOAD">button</button>
+	<p>button type="not defined" method="POST" class="btn btn-primary" value="UPLOAD"</p>
+</form>
+:}
