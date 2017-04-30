@@ -2,7 +2,6 @@ package Scheduler::Web::Dispatcher;
 use Amon2::Web::Dispatcher::RouterBoom;
 use Scheduler::DB;
 use Module::Find;
-
 useall 'Scheduler::Web::C';
 base 'Scheduler::Web::C';
 
